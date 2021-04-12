@@ -36,41 +36,43 @@ console.log(baseCount(e, v));
 let num = 7; 
 
 function switchNumberIntoText(num) {
+    $result = '';
     switch (num) {
         case 1:
-            return 'один';
+            console.log('один');
         case 2:
-            return 'два';
+            console.log('два');
         case 3:
-            return 'три';
+            console.log('три');
         case 4:
-            return 'четыре';
+            console.log('четыре');
         case 5:
-            return 'пять';
+            console.log('пять');
         case 6:
-            return 'шесть';
+            console.log('шесть');
         case 7:
-            return 'семь';
+            console.log('семь');
         case 8:
-            return 'восемь';
+            console.log('восемь');
         case 9:
-            return 'девять';
+            console.log('девять');
         case 10:
-            return 'десять';
+            console.log('десять');
         case 11:
-            return 'одиннадцать';
+            console.log('одиннадцать');
         case 12:
-            return 'двенадцать';
+            console.log('двенадцать');
         case 13:
-            return 'тринадцать';
+            console.log('тринадцать');
         case 14:
-            return 'четырнадцать';
+            console.log('четырнадцать');
         case 15:
-            return 'пятнадцать';
+            console.log('пятнадцать');
+            break;
     }
 }
 
-console.log(switchNumberIntoText(num));
+switchNumberIntoText(num);
 
 // 5.Реализовать основные 4 арифметические операции в виде функций с двумя параметрами. 
 function multiply(arg1, arg2) {
