@@ -1,21 +1,20 @@
 // 1. С помощью цикла while вывести все простые числа в промежутке от 0 до 100.
 let i = 0 
 
+while (i < 100) {
+    let flag = true;
+    let j = 0;
+    while (j < i) {
+        if (i % j === 0 && j !== 1) {
+            flag = false;
+            break;
+        }
+        j++;
+    }
 
-// while (i < 100) {
-//     let flag = true;
-//     let j = 0;
-//     while (j < i) {
-//         if (i % j === 0 && j !== 1) {
-//             flag = false;
-//             break;
-//         }
-//         j++;
-//     }
-
-//     if (flag) console.log(i);
-//     i++;
-// }
+    if (flag) console.log(i);
+    i++;
+}
 
 
 // 3. Товары в корзине хранятся в массиве. Задачи:
