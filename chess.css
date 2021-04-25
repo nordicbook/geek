@@ -1,0 +1,32 @@
+.block {
+    width: 120px;
+    height: 120px;
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.flex {
+    display: flex;
+}
+
+.row-block {
+    display: flex;
+}
+
+.column-block {
+    display: flex;
+    flex-direction: column;
+}
+
+.board-block {
+    display: flex;
+    flex-wrap: wrap;
+    width: calc(8 * 120px);
+}
+
+.block-black {
+    background: black;
+}

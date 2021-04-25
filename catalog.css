@@ -1,0 +1,36 @@
+#cart {
+    max-width: 1400px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    padding: 10px;
+    border: 2px solid black;
+}
+
+#catalog {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 1400px;
+    margin: 0 auto;
+    border: 2px solid black;
+    box-sizing: border-box;
+}
+
+.card {
+    width: 25%;
+    box-sizing: border-box;
+    padding: 10px;
+    text-align: center;
+}
+
+.product-image {
+    height: 220px;
+}
+
+.product-image img {
+    height: 100%;
+    object-fit: contain;
+}
+
+button {
+    cursor: pointer;
+}
