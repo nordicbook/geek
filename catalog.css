@@ -1,0 +1,178 @@
+.wrapper {
+    max-width: 1400px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    padding: 10px;
+    border: 2px solid black;
+}
+
+form h2 {
+    margin-top: 0;
+}
+
+#cart {
+    max-width: 1400px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    padding: 10px;
+    border: 2px solid black;
+}
+
+#catalog {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 1400px;
+    margin: 0 auto;
+    border: 2px solid black;
+    box-sizing: border-box;
+}
+
+.card {
+    width: 25%;
+    box-sizing: border-box;
+    padding: 10px;
+    text-align: center;
+}
+
+.product-image {
+    height: 220px;
+}
+
+.product-image img {
+    height: 100%;
+    object-fit: contain;
+}
+
+button {
+    cursor: pointer;
+}
+
+.gallery-box, .shadow-box {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.733);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.gallery-center, .shadow-box-center {
+    min-width: 350px;
+    width: 70%;
+    background: white;
+    position: relative;
+    padding: 15px;
+    box-sizing: border-box;
+}
+
+#gallery, .overflow-hidden {
+    overflow: hidden;
+}
+
+.slider {
+    min-height: 80vh;
+    display: flex;
+    position: relative;
+    transition: 0.5s;
+    left: 0;
+}
+
+.slider-medium {
+    min-height: 50vh;
+}
+
+.slide {
+    min-width: 100%;
+    background: center center / contain no-repeat;
+}
+
+.close {
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 5px;
+    color: black;
+    font-weight: bold;
+    font-size: 20px;
+    z-index: 99999;
+    cursor: pointer;
+}
+
+.gallery-row {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    background: black;
+    color: white;
+    padding: 10px;
+    width: 40px;
+    height: 40px;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+.gallery-row.left {
+    left: 20px;
+}
+
+.gallery-row.right {
+    right: 20px
+}
+
+#cart-modal {
+    display: none;
+}
+
+.form-navigation {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+input, 
+textarea {
+    display: block;
+    padding: 10px;
+    box-sizing: border-box;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+textarea {
+    min-height: 150px;
+}
+
+.cart-modal-window {
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.cart-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.cart-item img {
+    height: 80px;
+    width: 100px;
+    object-fit: contain;
+    margin-right: 30px;
+}
+
+.cart-item-description {
+    margin-right: 30px;
+}
+
+.cart-item-description h3 {
+    margin: 0;
+}
+
+.cart-item-manipulate {
+    
+}
