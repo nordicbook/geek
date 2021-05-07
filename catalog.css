@@ -1,3 +1,15 @@
+.wrapper {
+    max-width: 1400px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    padding: 10px;
+    border: 2px solid black;
+}
+
+form h2 {
+    margin-top: 0;
+}
+
 #cart {
     max-width: 1400px;
     margin: 0 auto;
@@ -35,7 +47,7 @@ button {
     cursor: pointer;
 }
 
-.gallery-box {
+.gallery-box, .shadow-box {
     position: fixed;
     top: 0;
     right: 0;
@@ -47,7 +59,7 @@ button {
     justify-content: center;
 }
 
-.gallery-center {
+.gallery-center, .shadow-box-center {
     min-width: 350px;
     width: 70%;
     background: white;
@@ -56,20 +68,23 @@ button {
     box-sizing: border-box;
 }
 
-#gallery {
+#gallery, .overflow-hidden {
     overflow: hidden;
 }
 
 .slider {
-    height: 90vh;
+    min-height: 80vh;
     display: flex;
     position: relative;
     transition: 0.5s;
     left: 0;
 }
 
+.slider-medium {
+    min-height: 50vh;
+}
+
 .slide {
-    height: 100%;
     min-width: 100%;
     background: center center / contain no-repeat;
 }
@@ -106,4 +121,58 @@ button {
 
 .gallery-row.right {
     right: 20px
+}
+
+#cart-modal {
+    display: none;
+}
+
+.form-navigation {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+input, 
+textarea {
+    display: block;
+    padding: 10px;
+    box-sizing: border-box;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+textarea {
+    min-height: 150px;
+}
+
+.cart-modal-window {
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.cart-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.cart-item img {
+    height: 80px;
+    width: 100px;
+    object-fit: contain;
+    margin-right: 30px;
+}
+
+.cart-item-description {
+    margin-right: 30px;
+}
+
+.cart-item-description h3 {
+    margin: 0;
+}
+
+.cart-item-manipulate {
+    
 }

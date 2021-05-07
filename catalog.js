@@ -67,6 +67,144 @@ class Cart {
     }
 }
 
+class CartModal {
+    constructor(cartWindow, cart) {
+        this.cart = cart;
+        this.window = cartWindow;
+        this.slider = cartWindow.querySelector('.slider');
+        this.curSlide = 0;
+        this.slides = cartWindow.querySelectorAll('.cart-modal-window').length;
+        this.itemsBlock = cartWindow.querySelector('.cart-modal-amount');
+    }
+    initCloseElements() {
+        let closeEls = this.window.querySelectorAll('.close-cart');
+        closeEls.forEach(element => {
+            element.addEventListener('click', () => {
+                this.hide();
+                this.cart.refresh();
+            });
+        })
+    }
+    initNavigationButtons() {
+        let rows = this.window.querySelectorAll('.back, .forward');
+
+        rows.forEach(row => {
+            row.addEventListener('click', () => {
+                if (row.classList.contains('forward')) {
+                    if (this.curSlide < this.slides - 1) {
+                        this.curSlide++; 
+                        this.slider.style.left = this.curSlide * -100 + '%';
+                    }
+                } else {
+                    if (this.curSlide > 0) {
+                        this.curSlide--; 
+                        this.slider.style.left = this.curSlide * -100 + '%';
+                    }
+                }      
+            });
+        }) 
+    }
+    refreshCard(item) {
+        let card = this.itemsBlock.querySelector(`[data-id="${item.id}"]`);
+        card.innerHTML = `
+            <img src="${item.image[0]}" alt="${item.name}">
+            <div class="cart-item-description">
+                <h3>${item.name}</h3>
+                <div class="cart-item-manipulate">
+                    <div class="description-amount">${item.amount}</div>
+                </div>
+            </div>
+            <div class="amount"><span>${item.amount * item.price}</span> руб.</div>
+            <input type="hidden" name="product[]" value="${JSON.stringify(item)}">
+        `;
+        this.addManipulateButtons(card, item);
+    }
+
+    addManipulateButtons(card, item) {
+        let cardAmountSection = card.querySelector('.description-amount');
+
+        let plus = document.createElement('button');
+        plus.setAttribute('type', 'button');
+        plus.classList.add('plus');
+        plus.textContent = '+';
+
+        plus.addEventListener('click', () => {
+            let cardID = card.getAttribute('data-id');
+            
+            this.cart.inCart.map(item => {
+                console.log(item.id, cardID);
+                if (item.id === Number(cardID)) {
+                    item.amount++;
+                    this.refreshCard(item);
+                    return item.amount++;
+                }
+            });
+            console.log(this.cart.inCart);
+        });
+
+        cardAmountSection.append(plus);
+
+        let minus = document.createElement('button');
+        minus.setAttribute('type', 'button');
+        minus.classList.add('minus');
+        minus.textContent = '-';
+
+        minus.addEventListener('click', () => {
+            let cardID = card.getAttribute('data-id');
+            this.cart.inCart.map(item => {
+                if (item.id === Number(cardID) && item.amount >= 0) {
+                    item.amount--;
+                    this.refreshCard(item);
+                    return item.amount--;
+                }
+            });
+            console.log(this.cart.inCart);
+        });
+        cardAmountSection.prepend(minus);
+    }
+    createItemBlock(item) {
+        let card = document.createElement('div');
+        card.classList.add('cart-item');
+        card.setAttribute('data-id', item.id);
+        card.innerHTML = `
+            <img src="${item.image[0]}" alt="${item.name}">
+            <div class="cart-item-description">
+                <h3>${item.name}</h3>
+                <div class="cart-item-manipulate">
+                    <div class="description-amount">${item.amount}</div>
+                </div>
+            </div>
+            <div class="amount"><span>${item.amount * item.price}</span> руб.</div>
+            <input type="hidden" name="product[]" value="${JSON.stringify(item)}">
+        `;
+
+        this.addManipulateButtons(card, item);
+        return card;
+    }
+    generateItems() {
+        this.itemsBlock.innerHTML = '';
+        if (this.cart.inCart.length === 0) {
+            this.itemsBlock.textContent = 'В Корзине нет товаров!';
+        } else {
+            this.cart.inCart.forEach(item => {
+                let itemCard = this.createItemBlock(item);
+                this.itemsBlock.append(itemCard);
+            });
+        }
+    }
+    show() {
+        this.window.style.display = 'flex';
+        this.generateItems();
+    }
+    hide() {
+        this.window.style.display = 'none';
+    }
+    init() {
+        this.initCloseElements();
+        this.initNavigationButtons();
+    }
+}
+
 class Catalog {
     constructor(block, products, cart) {
         this.products = products;
@@ -267,3 +405,12 @@ let products = [
 let cart = new Cart('#cart');
 let catalog = new Catalog('#catalog', products, cart);
 catalog.createCatalog();
+
+let cartModalWindow = document.querySelector('#cart-modal');
+let cartBtn = document.querySelector('#show-cart');
+let cartModal = new CartModal(cartModalWindow, cart);
+cartModal.init();
+
+cartBtn.addEventListener('click', function() {
+    cartModal.show();
+});
