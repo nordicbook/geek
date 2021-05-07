@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="catalog.css">
+    <title>Document</title>
+</head>
+<body>
+    <div id="cart">В корзине нет товаров</div>
+    <div class="wrapper">
+        <button id="show-cart">открыть корзину</button>
+    </div>
+    <div id="catalog"></div>
+    <div id="cart-modal" class="shadow-box">
+        <form action="" id="process-order" class="shadow-box-center overflow-hidden">
+            <div class="slider slider-medium">
+                <div class="cart-modal-window slide" data-cart-block="items">
+                    <h2>Состав корзины</h2>
+                    <div class="cart-modal-amount"></div>
+                </div>
+                <div class="cart-modal-window slide" data-cart-block="form">
+                    <h2>Адрес доставки</h2>
+                    <input type="text" name="city" placeholder="Город">
+                    <input type="text" name="address" placeholder="Адрес">
+                </div>
+                <div class="cart-modal-window slide" data-cart-block="comment">
+                    <h2>Комментарий</h2>
+                    <textarea name="comment"></textarea>
+                    <input type="submit" value="Заказать">
+                </div>
+            </div>
+            <div class="close close-cart">X</div>
+            <div class="form-navigation">
+                <button type="button" class="back"><-назад</button>
+                <button type="button" class="forward">дальше-></button>
+            </div>
+        </form>
+    </div>
+    <script src="catalog.js"></script>
+</body>
+</html>
